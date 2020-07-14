@@ -30,7 +30,7 @@ const GameScreen = ({ userChoice, onGameOver }) => {
     }
   }, [currentGuess, userChoice, onGameOver]);
 
-  const nextGuessHandler = direction => {
+  const nextGuessHandler = (direction) => {
     if (
       (direction === 'lower' && currentGuess < userChoice) ||
       (direction === 'greater' && currentGuess > userChoice)
@@ -54,7 +54,7 @@ const GameScreen = ({ userChoice, onGameOver }) => {
       currentGuess
     );
     setCurrentGuess(nextNumber);
-    setRounds(curRounds => curRounds + 1);
+    setRounds((curRounds) => curRounds + 1);
   };
 
   return (
