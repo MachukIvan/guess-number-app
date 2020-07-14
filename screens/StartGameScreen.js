@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Button,
   TouchableWithoutFeedback,
@@ -9,6 +8,8 @@ import {
   Alert,
 } from 'react-native';
 import colors from '../constants/colors';
+import TitleText from '../components/TitleText';
+import BodyText from '../components/BodyText';
 
 import Card from '../components/Card';
 import Input from '../components/Input';
@@ -19,7 +20,7 @@ const StartGameScreen = ({ onStartGame }) => {
   const [confirmed, setConfirmed] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState();
 
-  const numberInputHandler = inputText => {
+  const numberInputHandler = (inputText) => {
     setEnteredValue(inputText.replace(/[^0-9]/g, ''));
   };
 
@@ -47,9 +48,9 @@ const StartGameScreen = ({ onStartGame }) => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.screen}>
-        <Text style={styles.title}>Start a New Game!</Text>
+        <TitleText style={styles.title}>Start a New Game!</TitleText>
         <Card style={styles.inputContainer}>
-          <Text>Select a Number</Text>
+          <BodyText>Select a Number</BodyText>
           <Input
             style={styles.input}
             blurOnSubmit
@@ -79,7 +80,7 @@ const StartGameScreen = ({ onStartGame }) => {
         </Card>
         {confirmed && (
           <Card style={styles.summaryContainer}>
-            <Text>You selected:</Text>
+            <BodyText>You selected:</BodyText>
             <NumberContainer>{selectedNumber}</NumberContainer>
             <Button
               title="START GAME"
