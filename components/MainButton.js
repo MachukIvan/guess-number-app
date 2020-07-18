@@ -3,16 +3,10 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import colors from '../constants/colors';
 
-const MainButton = ({ onPress, title, accentColor }) => (
+const MainButton = ({ onPress, children }) => (
   <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
-    <View
-      style={
-        accentColor
-          ? { ...styles.button, ...styles.accentButton }
-          : styles.button
-      }
-    >
-      <Text style={styles.buttonText}>{title}</Text>
+    <View style={styles.button}>
+      <Text style={styles.buttonText}>{children}</Text>
     </View>
   </TouchableOpacity>
 );
@@ -23,9 +17,6 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 30,
     borderRadius: 25,
-  },
-  accentButton: {
-    backgroundColor: colors.accent,
   },
   buttonText: {
     color: 'white',
