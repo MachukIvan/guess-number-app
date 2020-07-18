@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, Button, Image, Text } from 'react-native';
+import { View, StyleSheet, Image, Text } from 'react-native';
 import BodyText from '../components/BodyText';
 import TitleText from '../components/TitleText';
 
 import colors from '../constants/colors';
+import MainButton from '../components/MainButton';
 
 const GameOverScreen = ({ roundsNumber, userNumber, onRestart }) => {
   return (
@@ -26,7 +27,7 @@ const GameOverScreen = ({ roundsNumber, userNumber, onRestart }) => {
           <Text style={styles.highlight}>{userNumber}</Text>
         </BodyText>
       </View>
-      <Button title="NEW GAME" onPress={onRestart} />
+      <MainButton title="NEW GAME" onPress={onRestart} />
     </View>
   );
 };

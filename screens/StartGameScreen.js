@@ -14,13 +14,14 @@ import BodyText from '../components/BodyText';
 import Card from '../components/Card';
 import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
+import MainButton from '../components/MainButton';
 
 const StartGameScreen = ({ onStartGame }) => {
   const [enteredValue, setEnteredValue] = useState('');
   const [confirmed, setConfirmed] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState();
 
-  const numberInputHandler = (inputText) => {
+  const numberInputHandler = inputText => {
     setEnteredValue(inputText.replace(/[^0-9]/g, ''));
   };
 
@@ -82,7 +83,7 @@ const StartGameScreen = ({ onStartGame }) => {
           <Card style={styles.summaryContainer}>
             <BodyText>You selected:</BodyText>
             <NumberContainer>{selectedNumber}</NumberContainer>
-            <Button
+            <MainButton
               title="START GAME"
               onPress={() => onStartGame(selectedNumber)}
             />
