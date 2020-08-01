@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, StyleSheet, Alert, FlatList } from 'react-native';
+import { View, StyleSheet, Alert, FlatList, Dimensions } from 'react-native';
 import BodyText from '../components/BodyText';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -33,7 +33,7 @@ const GameScreen = ({ userChoice, onGameOver }) => {
     }
   }, [currentGuess, userChoice, onGameOver]);
 
-  const nextGuessHandler = direction => {
+  const nextGuessHandler = (direction) => {
     if (
       (direction === 'lower' && currentGuess < userChoice) ||
       (direction === 'greater' && currentGuess > userChoice)
@@ -57,7 +57,7 @@ const GameScreen = ({ userChoice, onGameOver }) => {
       currentGuess
     );
     setCurrentGuess(nextNumber);
-    setPastGuesses(curPastGuesses => [
+    setPastGuesses((curPastGuesses) => [
       nextNumber.toString(),
       ...curPastGuesses,
     ]);
@@ -79,8 +79,8 @@ const GameScreen = ({ userChoice, onGameOver }) => {
         <FlatList
           contentContainerStyle={styles.list}
           data={pastGuesses}
-          keyExtractor={item => item}
-          renderItem={itemData => (
+          keyExtractor={(item) => item}
+          renderItem={(itemData) => (
             <ListItem
               value={itemData.item}
               roundNum={pastGuesses.length - itemData.index}
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 20,
+    marginTop: Dimensions.get('window').height > 600 ? 20 : 10,
     width: 300,
     maxWidth: '80%',
   },
